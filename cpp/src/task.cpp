@@ -255,22 +255,9 @@ public:
 
   int main(int argc, char** argv)
   {
-//    for(int i = 1; i <= 100; i++){
-//        int a = i;
-//        string path = "C:\\Users\\Yoma\\CLionProjects\\razpoznavalnik-1-Yoma3\\positive\\example"+to_string(a)+".txt";
-//
-//        ifstream file(path);
-//        if (file.is_open()) {
-//            Scanner s(&file);
-//            s.nextToken();
-//            Parser p(s);
-//            cout << "["<< i << "]->" << p.parse(); cout << " ";
-//            //if(p.parse()) cout << "positive";
-//            //else cout << "negative";
-//        }
-//    }
-    ifstream file(argv[1]);
-//    ifstream file(R"(C:\Users\Yoma\CLionProjects\razpoznavalnik-1-Yoma3\cpp\src\test.txt)");
+
+  //  ifstream file(argv[1]);
+    ifstream file(R"(C:\Users\Yoma\CLionProjects\razpoznavalnik-1-Yoma3\cpp\src\test.txt)");
     if (file.is_open()) {
         Scanner s(&file);
         s.nextToken();

@@ -261,8 +261,9 @@ public:
         Scanner s(&file);
         s.nextToken();
         Parser p(s);
-        if(p.parse()) cout << "positive";
-        else cout << "negative";
+        cout << p.parse();
+        //if(p.parse()) cout << "positive";
+        //else cout << "negative";
     }
 }
 

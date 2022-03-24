@@ -188,7 +188,8 @@ public:
     //    finite[8] = 0;      //space
 
     bool F(){
-        switch (scanner.currentToken().getToken()) {
+        int current = scanner.currentToken().getToken();
+        switch (current) {
             case 1: case 3: case 4: case 5: case 6: case 9: case 8: case 10://if token is sign/variable/number -> return true
                 return true;
             case 7://case 7: if current token is -, next check the next one ---> if it's not one of the above, return false
@@ -249,7 +250,6 @@ public:
     bool parse(){
         return (E() && scanner.currentToken().isEoF());
     }
-
 };
 
 

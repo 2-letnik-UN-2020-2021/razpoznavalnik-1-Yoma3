@@ -180,24 +180,31 @@ public:
     //    finite[5] = 5;      //variable
     //    finite[6] = 6;      //+
     //    finite[7] = 7;      //-
-    //    finite[13] = 13;    //*
+    //    finite[8] = 8;    //*
     //    finite[9] = 9;      // / - divide
     //    finite[10] = 10;    // ^ - pow
     //    finite[11] = 11;    // ( lparen
     //    finite[12] = 12;    // ) rparen
-    //    finite[8] = 0;      //space
+    //    finite[13] = 13;      //space
 
     bool F(){
         int current = scanner.currentToken().getToken();
         switch (current) {
-            case 1: case 3: case 4: case 5: case 9: case 8: case 10://if token is sign/variable/number -> return true
+            case 1: case 3: case 4: case 5: //if token is sign/variable/number -> return true
                 return true;
+
             case 6: case 7://case 7: if current token is -, next check the next one ---> if it's not one of the above, return false
                 if (scanner.currentToken().getLexem() == "-" || scanner.currentToken().getLexem() == "+") {
                     scanner.nextToken();
                     return F();     //recursive
                 }
                 return false;
+            case 9: case 8: case 10:{
+                string lexemNext = scanner.nextToken().getLexem();
+                if(lexemNext == "*" || lexemNext == "/" || lexemNext == "^")
+                    return false;
+                return true;
+            }
             case 11://case 11: if current token is (, check if it's a start with variable/number and ends with ) ---> if not, return false
                 if (scanner.currentToken().getLexem() == "(") {
                     scanner.nextToken();
@@ -256,8 +263,8 @@ public:
   int main(int argc, char** argv)
   {
 
-  //  ifstream file(argv[1]);
-    ifstream file(R"(C:\Users\Yoma\CLionProjects\razpoznavalnik-1-Yoma3\cpp\src\test.txt)");
+    ifstream file(argv[1]);
+    //ifstream file(R"(C:\Users\Yoma\CLionProjects\razpoznavalnik-1-Yoma3\cpp\src\test.txt)");
     if (file.is_open()) {
         Scanner s(&file);
         s.nextToken();
